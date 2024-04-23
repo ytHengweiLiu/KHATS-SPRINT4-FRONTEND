@@ -5,7 +5,7 @@ const Dashboard = () => {
   return (
     <>
       <NavbarLogout pageName={'Dashboard'} />
-      <Sidebar />
+      <Sidebar boldText={'dashboard'} />
       <CopyrightFooter />
     </>
   )

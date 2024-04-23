@@ -5,7 +5,7 @@ const Send = () => {
   return (
     <>
       <NavbarLogout pageName={'Send'} />
-      <Sidebar />
+      <Sidebar boldText={'send'} />
       <CopyrightFooter />
     </>
   )

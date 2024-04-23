@@ -5,7 +5,7 @@ const Creation = () => {
   return (
     <>
       <NavbarLogout pageName={'Creation'} />
-      <Sidebar />
+      <Sidebar boldText={'creation'} />
       <CopyrightFooter />
     </>
   )

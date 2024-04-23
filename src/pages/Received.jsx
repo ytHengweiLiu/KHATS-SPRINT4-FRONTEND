@@ -5,7 +5,7 @@ const Received = () => {
   return (
     <>
       <NavbarLogout pageName={'Received'} />
-      <Sidebar />
+      <Sidebar boldText={'received'} />
       <CopyrightFooter />
     </>
   )

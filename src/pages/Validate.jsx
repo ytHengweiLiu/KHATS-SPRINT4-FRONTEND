@@ -5,7 +5,7 @@ const Validate = () => {
   return (
     <>
       <NavbarLogout pageName={'Validate'} />
-      <Sidebar />
+      <Sidebar boldText={'validate'} />
       <CopyrightFooter />
     </>
   )

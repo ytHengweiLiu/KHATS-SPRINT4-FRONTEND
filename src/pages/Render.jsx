@@ -5,7 +5,7 @@ const Render = () => {
   return (
     <>
       <NavbarLogout pageName={'Render'} />
-      <Sidebar />
+      <Sidebar boldText={'render'}/>
       <CopyrightFooter />
     </>
   )
