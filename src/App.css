@@ -1,6 +1,12 @@
 .App {
   text-align: center;
 }
+html, body, #root .content {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial;
+}
 
 .App-logo {
   height: 40vmin;
