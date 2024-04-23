@@ -1,10 +1,10 @@
 import React from 'react'
 import { CopyrightFooter, NavbarLogout, Sidebar } from '../components/Index'
 
-const Dashboard = () => {
+const Dashboard = ({token, setToken}) => {
   return (
     <>
-      <NavbarLogout pageName={'Dashboard'} />
+      <NavbarLogout pageName={'Dashboard'} token={token} setToken={setToken}/>
       <Sidebar boldText={'dashboard'} />
       <div >
         Dashboard

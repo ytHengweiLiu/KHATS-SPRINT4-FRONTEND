@@ -22,7 +22,7 @@ function App() {
         <Route path="/login" element={<Login token={token} setToken={(token) => setTokenAbstract(token)} />} />
         <Route path="/register" element={<Register token={token} setToken={(token) => setTokenAbstract(token)} />} />
         <Route path="/dashboard" element={<Dashboard token={token} setToken={(token) => setTokenAbstract(token)}/>} />
-        <Route path="/creation" element={<Creation />} />
+        <Route path="/creation" element={<Creation token={token}/>} />
         <Route path="/render" element={<Render />} />
         <Route path="/send" element={<Send />} />
         <Route path="/received" element={<Received />} />

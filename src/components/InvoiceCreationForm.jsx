@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState } from 'react';
 import Item from './ItemForm';
 
-function InvoiceForm() {
+function InvoiceForm( {token}) {
   const [customerId, setCustomerId] = useState('');
   const [customerName, setCustomerName] = useState('');
   const [customerCity, setCustomerCity] = useState('');
@@ -82,7 +82,8 @@ function InvoiceForm() {
     const createInvoice = async () => {
       try {
         // http://khatsauthentication.alwaysdata.net/
-        await axios.post('https://w13a-brownie.vercel.app/v2/api/invoice/create',
+        await axios.post('http://localhost:3001/khats/createInvoice',
+          {headers : { authorization: `${token}`}},
           formData);
       } catch (err) {
         alert(err.response.data.error)
