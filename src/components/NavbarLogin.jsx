@@ -11,8 +11,8 @@ const NavbarLogin = () => {
     <>
       <Navbar bg="white" data-bs-theme="light">
         <Container>
-        <Navbar.Brand style={{ color: 'green', fontFamily: 'Alice', fontSize: '2em' }}>KHATS</Navbar.Brand>
-          <Nav className="me-auto">
+        <Navbar.Brand ><span style={{ color: 'green', fontFamily: 'Alice', fontSize: '2em' }}>KHATS</span></Navbar.Brand>
+          <Nav className="ml-auto">
             <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>
             <Nav.Link onClick={() => navigate('/register')}>Register</Nav.Link>
           </Nav>
