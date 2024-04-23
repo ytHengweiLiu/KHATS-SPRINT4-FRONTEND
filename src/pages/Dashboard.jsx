@@ -1,14 +1,21 @@
-import React from 'react'
-import { NavbarLogout, CopyrightFooter, Sidebar } from '../components/Index'
+import React from 'react';
+import { NavbarLogout, CopyrightFooter, Sidebar } from '../components/Index';
+import '../App.css'; // Import CSS file for styling
 
 const Dashboard = () => {
   return (
     <>
       <NavbarLogout pageName={'Dashboard'} />
-      <Sidebar boldText={'dashboard'} />
-      <CopyrightFooter />
+      <div className="grid-container">
+        <Sidebar boldText={'dashboard'} />
+        <div className="content-container">
+          Dashboard
+        </div>
+        <CopyrightFooter />
+      </div>
     </>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
+
