@@ -1,11 +1,15 @@
 import React from 'react'
-import { NavbarLogout, CopyrightFooter, Sidebar } from '../components/Index'
+import { CopyrightFooter, NavbarLogout, Sidebar } from '../components/Index'
+import InvoiceForm from '../components/InvoiceCreationForm'
 
-const Creation = () => {
+const Creation = ({token}) => {
   return (
     <>
       <NavbarLogout pageName={'Creation'} />
       <Sidebar boldText={'creation'} />
+      <div>
+        <InvoiceForm token={token}/>
+      </div>
       <CopyrightFooter />
     </>
   )
