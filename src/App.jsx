@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Login, Register, Dashboard, Creation, Render, Send, Received, Validate } from './pages/Index';
+import { Login, Register, Dashboard, Creation, Render, Send, Received, Validate, Invoices } from './pages/Index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
         <Route path="/send" element={<Send />} />
         <Route path="/received" element={<Received />} />
         <Route path="/validate" element={<Validate />} />
+        <Route path="/invoices" element={<Invoices />} />
       </Routes>
     </BrowserRouter>
   );

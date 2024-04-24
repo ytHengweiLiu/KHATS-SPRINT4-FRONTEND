@@ -14,9 +14,9 @@ const Sidebar = ({ boldText }) => {
   };
 
   return (
-    <div className={`bg-white d-flex justify-content-between flex-column`} style={{ width: '10%'}}>
+    <div className={`bg-white d-flex justify-content-between flex-column`} style={{ width: '11  %'}}>
       <List>
-        {['dashboard', 'creation', 'render', 'send', 'received', 'validate'].map((text, index) => (
+        {['dashboard', 'creation', 'Invoices', 'render', 'send', 'received', 'validate'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => handleClick(text)} >
               <ListItemText
