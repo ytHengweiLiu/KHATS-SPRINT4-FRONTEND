@@ -1,8 +1,8 @@
-import React from 'react'
-import { NavbarLogout, CopyrightFooter, Sidebar, FileList, SendModal } from '../components/Index'
 import Button from '@mui/material/Button';
+import React from 'react';
+import { CopyrightFooter, FileList, NavbarLogout, SendModal, Sidebar } from '../components/Index';
 
-const Invoices = () => {
+const Invoices = ({ token }) => {
   const [enableCheck, setEnableCheck] = React.useState(false)
   const [selected, setSelected] = React.useState([])
   return (
@@ -12,8 +12,8 @@ const Invoices = () => {
         <Sidebar boldText={'Invoices'} />
         <div className="content-container">
           {!enableCheck && <Button variant="text" onClick={() => setEnableCheck(true)}>Select</Button>}
-          {enableCheck && <SendModal fileIds={selected} setEnableCheck={setEnableCheck}/>}
-          <FileList enableCheck={enableCheck} selected={selected} setSelected={setSelected} />
+          {enableCheck && <SendModal fileIds={selected} setEnableCheck={setEnableCheck} />}
+          <FileList enableCheck={enableCheck} selected={selected} setSelected={setSelected} token={token}/>
         </div>
         <CopyrightFooter />
       </div>

@@ -1,15 +1,13 @@
-import React from 'react'
+import React from 'react';
 // import FileBlock from './FileBlock'
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-import RenderBtn from './RenderBtn'
-import axios from 'axios';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Checkbox from '@mui/material/Checkbox';
+import axios from 'axios';
+import RenderBtn from './RenderBtn';
 
 
-const FileList = ({ enableCheck, selected, setSelected }) => {
-  const token = '0b93479c-996f-4aa5-b932-a30c5e8fe41d';
-
+const FileList = ({ enableCheck, selected, setSelected, token }) => {
   const [toRender, setToRender] = React.useState(false)
   const [files, setFiles] = React.useState([])
   const getFilesCall = async () => {
@@ -24,11 +22,11 @@ const FileList = ({ enableCheck, selected, setSelected }) => {
     } catch (err) {
       console.log(err.response && err.response.data.error ? err.response.data.error : 'Failed to login');
     }
-  } 
+  }
   React.useEffect(() => {
     const filesPromise = getFilesCall();
     filesPromise.then((files) => {
-      setFiles(files);  
+      setFiles(files);
       setToRender(true);
       console.log(files)
     })
@@ -43,15 +41,15 @@ const FileList = ({ enableCheck, selected, setSelected }) => {
   }
   return (
     <div className='fileList'>
-        {toRender && files.reverse().map((fileObj) => {
-          // return <FileBlock key={fileObj.id} file={fileObj} />
-          return <div key={fileObj.id} className='fileBlock'>
-            <h3 className='fileBlockName'>{fileObj.file.originalname}</h3>
-            {fileObj.isValidated ? <CheckCircleIcon /> : <CancelIcon />}
-            <RenderBtn fileId={fileObj.id} />
-            {enableCheck && <Checkbox  onChange={() => handleOnChange(fileObj.id)}/>}
-          </div>
-        })}
+      {toRender && files?.map((fileObj) => {
+        // return <FileBlock key={fileObj.id} file={fileObj} />
+        return <div key={fileObj.id} className='fileBlock'>
+          <h3 className='fileBlockName'>{fileObj.file.originalname}</h3>
+          {fileObj.isValidated ? <CheckCircleIcon /> : <CancelIcon />}
+          <RenderBtn fileId={fileObj.id} />
+          {enableCheck && <Checkbox onChange={() => handleOnChange(fileObj.id)} />}
+        </div>
+      })}
     </div>
   )
 }
