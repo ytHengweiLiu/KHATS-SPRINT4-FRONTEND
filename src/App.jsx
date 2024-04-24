@@ -1,17 +1,27 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Login, Register, Dashboard, Creation, Render, Send, Received, Validate, Invoices } from './pages/Index';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { React, useState } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Login, Register, Dashboard, Creation, Render, Send, Received, Validate, Invoices } from './pages/Index';
 function App() {
+  let isToken = null;
+  if (localStorage.getItem('token') && localStorage.getItem('token') !== "undefined") {
+    isToken = JSON.parse(localStorage.getItem('token'));
+  }
+
+  const [token, setToken] = useState(isToken);
+
+  const setTokenAbstract = (token) => {
+    setToken(token);
+    localStorage.setItem('token', JSON.stringify(token));
+  }
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/creation" element={<Creation />} />
+        <Route path="/login" element={<Login token={token} setToken={(token) => setTokenAbstract(token)} />} />
+        <Route path="/register" element={<Register token={token} setToken={(token) => setTokenAbstract(token)} />} />
+        <Route path="/dashboard" element={<Dashboard token={token} setToken={(token) => setTokenAbstract(token)}/>} />
+        <Route path="/creation" element={<Creation token={token}/>} />
         <Route path="/render" element={<Render />} />
         <Route path="/send" element={<Send />} />
         <Route path="/received" element={<Received />} />

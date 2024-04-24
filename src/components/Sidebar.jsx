@@ -14,13 +14,13 @@ const Sidebar = ({ boldText }) => {
   };
 
   return (
-    <div className={`bg-white d-flex justify-content-between flex-column`} style={{ width: '11  %'}}>
+    <div className={`bg-white d-flex justify-content-between flex-column`} style={{ width: '100%'}}>
       <List>
-        {['dashboard', 'creation', 'Invoices', 'render', 'send', 'received', 'validate'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton onClick={() => handleClick(text)} >
+        {['dashboard', 'creation', 'render', 'send', 'received', 'validate', 'invoices'].map((text, index) => (
+          <ListItem key={text} disablePadding style={{ height: '90px' }}>
+            <ListItemButton onClick={() => handleClick(text)} style={{ height: '100%' }} >
               <ListItemText
-                primary={<span style={{ textAlign: 'center', fontWeight: boldText === text ? 'bold' : 'normal' }} >{text}</span>}
+                primary={<span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', fontSize: '1.6em', fontWeight: boldText === text ? 'bold' : 'normal' }} >{text}</span>}
               />
             </ListItemButton>
           </ListItem>

@@ -1,55 +1,107 @@
-import React from 'react'
-// import axios from 'axios';
+import { Button, Paper, TextField } from '@mui/material';
+import axios from 'axios';
+import { React, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { NavbarLogin, CopyrightFooter } from '../components/Index'
-import Button from 'react-bootstrap/Button';
+import { CopyrightFooter, NavbarLogin } from '../components/Index';
 
-const Register = () => {
-//   const [email, setEmail] = React.useState('')
-//   const [password, setPassword] = React.useState('')
-//   const [name, setName] = React.useState('')
-  const navigate = useNavigate()
+const Register = ({ token, setToken }) => {
+  const [email, setEmail] = useState('');
+  const [password1, setPassword1] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [number, setNumber] = useState('');
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token !== null) {
+      navigate('/dashboard');
+    }
+  }, [token, navigate]);
 
   const register = async () => {
-    // try {
-    //   const response = await axios.post('http://localhost:5005/admin/auth/register', {
-    //     email,
-    //     password,
-    //     name
-    //   })
-    //   console.log(response.data);
-    //   navigate('/dashboard')
-    // } catch (err) {
-    //   alert(err.response.data.error)
-    // }
-    navigate('/dashboard')
+    const isCustomer = false;
+    console.log(typeof number)
+    console.log(number.length)
+    try {
+      const response = await axios.post('http://localhost:3001/khats/auth/register', {
+        nameFirst: firstName,
+        nameLast: lastName,
+        email: email,
+        number: number,
+        password1: password1,
+        password2: password2,
+        isCustomer: isCustomer
+      });
+      console.log(response)
+      if (response.data.status === '400') {
+        alert(response.data.error);
+      } else {
+        console.log(response.data.token);
+        setToken(response.data.token);
+      }
+    } catch (err) {
+      alert(err.response.data.error);
+    }
   }
 
   return (
     <>
       <NavbarLogin />
       <div className={'d-flex justify-content-center align-items-center'} style={{ paddingTop: '8%' }}>
-        <div id="page-register">
-          <h1 className="h2 mb-3 fw-normal" style={{ color: 'green', fontFamily: 'Alice' }} >Register</h1>
-          <div className="form-floating">
-            <input type="text" className="form-control" id="register-name" placeholder="Name" />
-            <label htmlFor="register-name">Name</label>
-          </div>
-          <div className="form-floating">
-            <input type="text" className="form-control" id="register-email" placeholder="Email Address" />
-            <label htmlFor="register-email">Email address</label>
-          </div>
-          <div className="form-floating">
-            <input type="password" className="form-control" id="register-password" placeholder="Password" />
-            <label htmlFor="register-password">Password</label>
-          </div>
-          <div className="form-floating">
-            <input type="password" className="form-control" id="register-confirm-password" placeholder="Confirm Password" />
-            <label htmlFor="register-confirm-password">Confirm password</label>
-          </div>
-          <p></p>
-          <Button id="login-user" variant="outline-success" onClick={register} >Register</Button>
-        </div>
+        <Paper sx={{ padding: '2%', width: '50%', height: '675px' }} align='center' id="page-login">
+          <h1 className="h2 mb-3 fw-normal" style={{ color: 'green', fontFamily: 'Alice' }} > Register</h1>
+          <TextField
+            margin='normal'
+            label="First Name"
+            placeholder="First Name"
+            fullWidth
+            onChange={e => setFirstName(e.target.value)}
+            required />
+          <TextField
+            margin='normal'
+            label="Last Name"
+            placeholder="Last Name"
+            fullWidth
+            onChange={e => setLastName(e.target.value)}
+            required />
+          <TextField
+            margin='normal'
+            type="email"
+            label="Email"
+            placeholder="Email address"
+            fullWidth
+            onChange={e => setEmail(e.target.value)}
+            required />
+          <TextField
+            margin='normal'
+            type="email"
+            label="Number"
+            placeholder="Number"
+            fullWidth
+            onChange={e => setNumber(e.target.value)}
+            required />
+          <TextField
+            margin='normal'
+            type="password"
+            label="Password"
+            placeholder="Password"
+            onChange={e => setPassword1(e.target.value)}
+            fullWidth
+            required />
+          <TextField
+            margin='normal'
+            type="password"
+            label="Confirm Password"
+            placeholder="Confirm Password"
+            fullWidth
+            onChange={e => setPassword2(e.target.value)}
+            required />
+          <br />
+          <br />
+          <Button variant="contained" onClick={register} >Login</Button>
+        </Paper>
       </div>
       <CopyrightFooter />
     </>
