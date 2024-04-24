@@ -12,6 +12,7 @@ function App () {
 
   const setTokenAbstract = (token) => {
     setToken(token);
+    console.log(token);
     localStorage.setItem('token', JSON.stringify(token));
   }
   return (

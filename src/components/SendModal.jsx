@@ -6,8 +6,9 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-export default function SendModal ({ fileIds, setEnableCheck }) {
-  const token = '0b93479c-996f-4aa5-b932-a30c5e8fe41d';
+export default function SendModal ({ fileIds, setEnableCheck, }) {
+  // const token = '0b93479c-996f-4aa5-b932-a30c5e8fe41d';
+  const token = localStorage.getItem('token');
   const [open, setOpen] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [canSend, setCanSend] = React.useState(false);

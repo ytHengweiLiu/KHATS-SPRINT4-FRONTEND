@@ -15,7 +15,7 @@ const Register = ({ token, setToken }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token !== null) {
+    if (token) {
       navigate('/dashboard');
     }
   }, [token, navigate]);

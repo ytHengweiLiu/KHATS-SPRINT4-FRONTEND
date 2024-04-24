@@ -15,8 +15,9 @@ const NavbarLogout = ({ pageName, token, setToken }) => {
           authorization: `${token}`
         }
       });
-      navigate('/login')
+      navigate('/login')  
       setToken(null);
+      localStorage.removeItem('token')
     } catch (err) {
       console.log(err);
     }

@@ -10,7 +10,7 @@ function Login ({ token, setToken }) {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (token !== null) {
+    if (token) {
       navigate('/dashboard');
     }
   }, [token, navigate]);
@@ -24,6 +24,7 @@ function Login ({ token, setToken }) {
       if (response.data.status === '400') {
         alert(response.data.error);
       } else {
+        console.log(response.data)
         setToken(response.data.token);
       }
     } catch (err) {
